@@ -88,41 +88,28 @@ struct ContentView: View {
                     .padding(.horizontal, 50)
                 } //: VSTACK
                 .padding()
-                if #available(iOS 16.0, *) {
-                    List {
-                        ForEach(items) { item in
-                            NavigationLink {
-                                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                            } label: {
-                                SearchedItemView(item: item)
-                                    .shadow(color: Color.gray.opacity(0.2), radius: 5, x: 0, y: 0)
-                            }
-                            
-                        } //: FOR EACH
-                        .onDelete(perform: deleteItems)
-                    } //: LIST
-                    .scrollContentBackground(.hidden)
-                } else {
-                    List {
-                        ForEach(items) { item in
-                            NavigationLink {
-                                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                            } label: {
-                                SearchedItemView(item: item)
-                                    .shadow(color: Color.gray.opacity(0.2), radius: 5, x: 0, y: 0)
-                            }
-                        } //: FOR EACH
-                        .onDelete(perform: deleteItems)
-                    } //: LIST
-                } // IF AVAILABLE CHECK
                 
+                    ScrollView(.vertical, showsIndicators: false) {
+                            ForEach(items) { item in
+                                NavigationLink {
+                                    Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                                } label: {
+                                    SearchedItemView(item: item)
+                                }
+                            } //: FOR EACH
+                        
+                            .onDelete(perform: deleteItems)
+                            
+                        } //: SCROLL
+                
+                    .shadow(color: Color.gray.opacity(0.2), radius: 5, x: 0, y: 0)
             } //: VSTACK
         } //: NAVIGATION
+        
         
     }
 
 }
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
