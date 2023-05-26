@@ -11,6 +11,11 @@ struct SearchedItemView: View {
     
     @Environment(\.managedObjectContext) var viewContext
     @ObservedObject var item: Item
+    @State private var offset = CGSize.zero
+    @State private var isAnimating: Bool = false
+    @State private var imageOffset: CGSize = CGSize(width: 0, height: 0)
+    @State private var showAlert = false
+    
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -57,11 +62,13 @@ struct SearchedItemView: View {
                 
             }
             
-            
         } //: VSTACK
         .frame(width: 350)
         .background(Color("Color 1"))
         .cornerRadius(12)
+        
+        
+        
        
     }
 }

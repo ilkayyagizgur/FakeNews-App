@@ -29,13 +29,13 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for i in 0..<5 {
+//        for i in 0..<5 {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
-            newItem.orj_text = "Sample News No\(i)"
+            newItem.orj_text = "Sample News"
             newItem.completion = false
             newItem.id = UUID()
-        }
+//        }
         do {
             try viewContext.save()
         } catch {
