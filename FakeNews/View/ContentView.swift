@@ -14,6 +14,16 @@ struct ContentView: View {
     @State private var imageOffset: CGSize = CGSize(width: 0, height: 0)
     @State private var showAlert = false
     @State private var showNewTaskItem: Bool = false
+//    @Binding var label: Int?
+//    let responseData: ResponseData
+    @State private var responseData: NewTaskItemView.ResponseData? = nil
+    
+    struct ResponseData: Codable {
+        // Define the properties that match the structure of the JSON response
+        let label: Int
+        let prob: Float
+        // ...
+    }
     
     @Environment(\.managedObjectContext) private var viewContext
 
@@ -55,6 +65,7 @@ struct ContentView: View {
                         .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
                     Spacer()
                     
+                    
                     if items.count == 0 {
                         Image("emptyListImage")
                             .resizable()
@@ -75,10 +86,15 @@ struct ContentView: View {
                         List {
                             ForEach(items) { item in
                                 NavigationLink {
-                                    SearchedItemDetailView(item: item)
+                                    if let responseData = responseData {
+                                        SearchedItemDetailView(item: item, responseData: responseData)
+                                    }
                                 } label: {
-                                    SearchedItemView(item: item)
-                                        .padding(.leading, 20)
+                                    if let responseData = responseData {
+                                        SearchedItemView(item: item, responseData: responseData)
+                                            .padding(.leading, 20)
+                                                }
+                                       
     
                                 }
                             } //: FOR EACH
@@ -132,7 +148,7 @@ struct ContentView: View {
                             }
                         }
                     
-                    NewTaskItemView(isShowing: $showNewTaskItem)
+                    NewTaskItemView(isShowing: $showNewTaskItem, responseData: $responseData)
                 }
             } //: ZSTACK
             .background(Color("BackOfButton"))

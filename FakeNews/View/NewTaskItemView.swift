@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct NewTaskItemView: View {
     // MARK: - PROPERTY
@@ -14,11 +15,13 @@ struct NewTaskItemView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @State private var textEditorText: String = ""
     @Binding var isShowing: Bool
+    @Binding var responseData: ResponseData?
     
     
     private var isButtonDisabled: Bool {
         textEditorText.isEmpty
     }
+    
     
     // MARK: - FUNCTION
     
@@ -27,6 +30,7 @@ struct NewTaskItemView: View {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
             newItem.orj_text = textEditorText
+//            newItem.label =
             newItem.completion = false
             newItem.id = UUID()
 
@@ -43,39 +47,65 @@ struct NewTaskItemView: View {
         }
     }
     
-    func postRequest() async {
-        
-        let url = URL(string: "https://reqres.in/api/cupcakes")!
-        var request = URLRequest(url: url)
-        request.setValue("\(textEditorText)", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
+    struct ResponseData: Codable {
+        // Define the properties that match the structure of the JSON response
+        let label: Int
+        let prob: Float
+        // ...
     }
     
-    func jsonpost() async {
-        //Request Body
-        let json: [String: Any] = ["orj_Text": textEditorText]
-         
-        let jsonData = try? JSONSerialization.data(withJSONObject: json)
-         
-        // create post request
-        let url = URL(string: "http://httpbin.org/post")!
+    func jsonpost(completion: @escaping (ResponseData?) -> Void) {
+        // Request Body
+        let json: [String: Any] = ["text": textEditorText]
+        
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: json) else {
+            print("Failed to serialize JSON")
+            completion(nil)
+            return
+        }
+        
+        // Create post request
+        let url = URL(string: "http://localhost:53136/predict")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-         
-        // insert json data to the request
+        
+        // Insert JSON data into the request
         request.httpBody = jsonData
+        
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print(error?.localizedDescription ?? "No data")
+                completion(nil)
                 return
             }
-            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-            if let responseJSON = responseJSON as? [String: Any] {
-                print(responseJSON)
+            
+            let decoder = JSONDecoder()
+            do {
+                // Decode the data into an instance of ResponseData
+                let responseData = try decoder.decode(ResponseData.self, from: data)
+                completion(responseData)
+                print(responseData)
+            } catch {
+                print("Failed to decode JSON: \(error)")
+                completion(nil)
             }
         }
         task.resume()
     }
+    
+    func fetchData(){
+            jsonpost { responseData in
+                if let responseData = responseData {
+                    DispatchQueue.main.async {
+                        self.responseData = responseData
+                    }
+                    print(responseData.label)
+                    print(responseData.prob)
+                    
+                }
+            }
+        }
+   //
     
     // MARK: - BODY
     var body: some View {
@@ -88,10 +118,10 @@ struct NewTaskItemView: View {
                     .overlay(RoundedRectangle(cornerRadius: 10.0).strokeBorder(Color.gray, style: StrokeStyle(lineWidth: 1.0)))
                 
                 Button(action: {
-//                    Task {
-//                            await jsonpost()
-//                        }
+                    fetchData()
+                    
                     addItem()
+                    
                 }, label: {
                     Spacer()
                     Text("Make Query")
@@ -103,6 +133,15 @@ struct NewTaskItemView: View {
                 .foregroundColor(.white)
                 .background(isButtonDisabled ? Color.gray : Color.pink)
                 .cornerRadius(10)
+                
+//                Group {
+//                    if let responseData = responseData {
+//                        ContentView(responseData: responseData)
+//                    } else {
+//                        EmptyView() // Placeholder view if responseData is nil
+//                    }
+//                }
+                
             } //: VSTACK
             .padding(.horizontal)
             .padding(.vertical, 20)
@@ -114,13 +153,14 @@ struct NewTaskItemView: View {
             .frame(maxWidth: 640)
         }//: VSTACK
         .padding()
+        
     }
 }
 
-struct NewTaskItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        NewTaskItemView(isShowing: .constant(true))
-            .background(Color.gray.edgesIgnoringSafeArea(.all))
-    }
-}
+//struct NewTaskItemView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NewTaskItemView(isShowing: .constant(true))
+//            .background(Color.gray.edgesIgnoringSafeArea(.all))
+//    }
+//}
 

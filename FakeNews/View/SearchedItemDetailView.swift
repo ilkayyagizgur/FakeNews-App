@@ -15,6 +15,7 @@ struct SearchedItemDetailView: View {
     @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     @Environment(\.openURL) var openURL
     //@State private var showWebView = false
+    let responseData: NewTaskItemView.ResponseData // Add this property
     
     var body: some View {
         
@@ -49,12 +50,23 @@ struct SearchedItemDetailView: View {
 //                            .padding(.vertical, 20)
 //                            .foregroundColor(Color("ColorRed"))
 //                    } else {
+                    
+                    if responseData.label == 1 {
                         Image(systemName: "checkmark.circle.fill")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 150, height: 150)
                             .padding(.vertical, 20)
                             .foregroundColor(Color("ColorBlue"))
+                    } else {
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 150, height: 150)
+                            .padding(.vertical, 20)
+                            .foregroundColor(Color("ColorRed"))
+                    }
+                    
 //                    }
                 
                 Text(item.orj_text ?? "not found")

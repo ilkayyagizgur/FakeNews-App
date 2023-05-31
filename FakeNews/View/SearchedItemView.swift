@@ -16,19 +16,30 @@ struct SearchedItemView: View {
     @State private var imageOffset: CGSize = CGSize(width: 0, height: 0)
     @State private var showAlert = false
     
+    let responseData: NewTaskItemView.ResponseData // Add this property
+    
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack(spacing: 10) {
                     Button(action: {
                         //showAlert = true
-                        //print(fake.DocumentIdentifier.split(separator: "."))
+                       
+                       
                     }, label: {
+                        if responseData.label == 1 {
                             Image(systemName: "checkmark.circle.fill")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 40, height: 40)
                                 .foregroundColor(Color("ColorBlue"))
+                        } else {
+                            Image(systemName: "exclamationmark.triangle.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 40, height: 40)
+                                .foregroundColor(Color("ColorRed"))
+                        }
                     })//: BUTTON
                     .padding(.horizontal, 7)
                 
@@ -41,6 +52,7 @@ struct SearchedItemView: View {
                 
                 
                 Spacer()
+                Text("Probability: \(responseData.prob)") // Use the responseData.label here
                 
             } //: HSTACK
             .padding(.horizontal, 10)
@@ -60,7 +72,7 @@ struct SearchedItemView: View {
 
 //struct SearchedItemView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        SearchedItemView()
+//        SearchedItemView(item: item)
 //            .previewLayout(.sizeThatFits)
 //    }
 //}
