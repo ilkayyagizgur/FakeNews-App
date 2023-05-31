@@ -43,22 +43,54 @@ struct NewTaskItemView: View {
         }
     }
     
+    func postRequest() async {
+        
+        let url = URL(string: "https://reqres.in/api/cupcakes")!
+        var request = URLRequest(url: url)
+        request.setValue("\(textEditorText)", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+    }
+    
+    func jsonpost() async {
+        //Request Body
+        let json: [String: Any] = ["orj_Text": textEditorText]
+         
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+         
+        // create post request
+        let url = URL(string: "http://httpbin.org/post")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+         
+        // insert json data to the request
+        request.httpBody = jsonData
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                print(responseJSON)
+            }
+        }
+        task.resume()
+    }
+    
     // MARK: - BODY
     var body: some View {
         VStack {
             Spacer()
             
             VStack(spacing: 16) {
-                TextField("New Task", text: $textEditorText)
-                    .foregroundColor(.pink)
-                    .font(.system(size: 24, weight: .bold, design: .rounded))
-                    .padding()
-                    .background(
-                        Color(UIColor.secondarySystemBackground)
-                    )
-                    .cornerRadius(10)
+                TextEditor(text: $textEditorText)
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 100)
+                    .overlay(RoundedRectangle(cornerRadius: 10.0).strokeBorder(Color.gray, style: StrokeStyle(lineWidth: 1.0)))
                 
                 Button(action: {
+//                    Task {
+//                            await jsonpost()
+//                        }
                     addItem()
                 }, label: {
                     Spacer()

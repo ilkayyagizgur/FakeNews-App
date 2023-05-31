@@ -17,7 +17,10 @@ struct HomeView: View {
     struct Constants {
         static let cornerRadius: CGFloat = 8.0
         static var buttonDisabled: Bool = true
-        static var clickedBackground: Color = Color.clear
+        static var allclickedBackground: Color = Color.clear
+        static var trueclickedBackground: Color = Color.clear
+        static var fakeclickedBackground: Color = Color.clear
+        
     }
     
     var body: some View {
@@ -36,70 +39,78 @@ struct HomeView: View {
                             withAnimation(.easeIn) {
                                 LazyVGrid(columns: gridLayout, alignment: .center, spacing: 10) {
                                     
-                                    HStack{
-                                        
-                                        Button(action: {
-                                            allButtonClicked.toggle()
-                                            
-                                            if allButtonClicked {
-                                                Constants.clickedBackground = Color("ColorRed")
-                                            } else {
-                                                Constants.clickedBackground = Color.clear
-                                            }
-                                            
-                                        }, label: {
-                                            
-                                            Text("All")
-                                                .font(.title2)
-                                                .fontWeight(.bold)
-                                                .foregroundColor(allButtonClicked ? Color.black : Color("ColorRed"))
-                                            
-                                            
-                                        })//: BUTTON
-                                        .frame(width: 50)
-                                        .font(.system(size: 18, weight: .semibold, design: .rounded))
-                                        .padding(.horizontal, 10)
-                                        .frame(minWidth: 40, minHeight: 35)
-                                        .background(Constants.clickedBackground)
-                                        
-                                        
-                                        
-                                        Button(action: {
-                                            
-                                        }, label: {
-                                            Text("True")
-                                                .font(.title2)
-                                                .fontWeight(.bold)
-                                                .foregroundColor(Color("ColorRed"))
-                                            
-                                        })//: BUTTON
-                                        .frame(width: 50)
-                                        .font(.system(size: 18, weight: .semibold, design: .rounded))
-                                        .padding(.horizontal, 10)
-                                        .frame(minWidth: 40, minHeight: 35)
-                                        .background(
-                                            Capsule().stroke(Color.red, lineWidth: 2))
-                                        
-                                        
-                                        Button(action: {
-                                            
-                                        }, label: {
-                                            
-                                            
-                                            Text("Fake")
-                                                .font(.title2)
-                                                .fontWeight(.bold)
-                                                .foregroundColor(Color("ColorRed"))
-                                            
-                                        })//: BUTTON
-                                        .frame(width: 50)
-                                        .font(.system(size: 18, weight: .semibold, design: .rounded))
-                                        .padding(.horizontal, 10)
-                                        .frame(minWidth: 40, minHeight: 35)
-                                        .background(
-                                            Capsule().stroke(Color.red, lineWidth: 2))
-                                    } //: HSTACK
-                                    .padding()
+//                                    HStack{
+//
+//                                        Button(action: {
+//                                            allButtonClicked.toggle()
+//                                            
+//                                            if allButtonClicked {
+//                                                Constants.allclickedBackground = Color("ColorRed")
+//                                            } else {
+//                                                Constants.allclickedBackground = Color.clear
+//                                            }
+//
+//                                        }, label: {
+//
+//                                            Text("All")
+//                                                .font(.title2)
+//                                                .fontWeight(.bold)
+//                                                .foregroundColor(allButtonClicked ? Color.white : Color("ColorRed"))
+//
+//
+//                                        })//: BUTTON
+//                                        .frame(width: 50)
+//                                        .font(.system(size: 18, weight: .semibold, design: .rounded))
+//                                        .padding(.horizontal, 10)
+//                                        .frame(minWidth: 40, minHeight: 35)
+//                                        .background(
+//                                            Capsule().stroke(Color.red, lineWidth: 2))
+//                                        .background(
+//                                            Constants.allclickedBackground.clipShape(Capsule()))
+//
+//
+//
+//
+//                                        Button(action: {
+//
+//                                        }, label: {
+//                                            Text("True")
+//                                                .font(.title2)
+//                                                .fontWeight(.bold)
+//                                                .foregroundColor(allButtonClicked ? Color.white : Color("ColorRed"))
+//
+//                                        })//: BUTTON
+//                                        .frame(width: 50)
+//                                        .font(.system(size: 18, weight: .semibold, design: .rounded))
+//                                        .padding(.horizontal, 10)
+//                                        .frame(minWidth: 40, minHeight: 35)
+//                                        .background(
+//                                            Capsule().stroke(Color.red, lineWidth: 2))
+//                                        .background(
+//                                            Constants.trueclickedBackground.clipShape(Capsule()))
+//
+//
+//                                        Button(action: {
+//
+//                                        }, label: {
+//
+//
+//                                            Text("Fake")
+//                                                .font(.title2)
+//                                                .fontWeight(.bold)
+//                                                .foregroundColor(allButtonClicked ? Color.white : Color("ColorRed"))
+//
+//                                        })//: BUTTON
+//                                        .frame(width: 50)
+//                                        .font(.system(size: 18, weight: .semibold, design: .rounded))
+//                                        .padding(.horizontal, 10)
+//                                        .frame(minWidth: 40, minHeight: 35)
+//                                        .background(
+//                                            Capsule().stroke(Color.red, lineWidth: 2))
+//                                        .background(
+//                                            Color.white.clipShape(Capsule()))
+//                                    } //: HSTACK
+//                                    .padding()
                                     
                                     
                                     ForEach(fakes) { fake in

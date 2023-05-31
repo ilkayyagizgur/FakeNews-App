@@ -10,7 +10,6 @@ import CoreData
 
 struct ContentView: View {
     
-    @State var textEditorText: String = ""
     @State private var isAnimating: Bool = false
     @State private var imageOffset: CGSize = CGSize(width: 0, height: 0)
     @State private var showAlert = false
@@ -25,27 +24,6 @@ struct ContentView: View {
     
     // MARK: - FUNCTIONS
     
-    private var isButtonDisabled: Bool {
-        textEditorText.isEmpty
-    }
-    
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-            newItem.orj_text = textEditorText
-            newItem.completion = false
-            newItem.id = UUID()
-
-            do {
-                try viewContext.save()
-            } catch {
-                
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
@@ -61,6 +39,9 @@ struct ContentView: View {
             }
         }
     }
+    
+    
+    
     
 // MARK: - BODY
     
@@ -89,27 +70,37 @@ struct ContentView: View {
                             .padding(.top, 5)
                         
                         Spacer()
+                        
                     } else{
                         List {
                             ForEach(items) { item in
                                 NavigationLink {
-                                    Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                                    SearchedItemDetailView(item: item)
                                 } label: {
                                     SearchedItemView(item: item)
+                                        .padding(.leading, 20)
     
-                                    
                                 }
                             } //: FOR EACH
                             .onDelete(perform: deleteItems)
+                            .listRowBackground(
+                                Rectangle().fill(.white)
+                                    .frame(width: 350)
+                                    .cornerRadius(12)
+                                    .padding(5)
+                            )
+                            .listRowSeparator(.hidden)
+//                            .padding(.horizontal, 10)
+//                            .padding(.vertical, 10)
                             
                         } //: LIST
-                        .shadow(color: Color.gray.opacity(0.2), radius: 5, x: 0, y: 0)
+                        
                     }
                     
                     Button(action: {
                         showNewTaskItem = true
                     }, label: {
-                        Image(systemName: "plus.circle")
+                        Image(systemName: "plus")
                             .font(.system(size: 25, weight: .semibold, design: .rounded))
                         Text("Make Query")
                             .font(.system(size: 22, weight: .black, design: .rounded))
@@ -144,6 +135,7 @@ struct ContentView: View {
                     NewTaskItemView(isShowing: $showNewTaskItem)
                 }
             } //: ZSTACK
+            .background(Color("BackOfButton"))
             
             
         } //: NAVIGATION

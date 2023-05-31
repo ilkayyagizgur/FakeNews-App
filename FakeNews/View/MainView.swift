@@ -17,12 +17,6 @@ struct MainView: View {
                 }
                 .background(Color("Color"))
             
-            SearchView()
-                .tabItem{
-                    Image(systemName: "magnifyingglass")
-                    Text("Search")
-                }
-            
             ContentView()
                 .tabItem{
                     Image(systemName: "magnifyingglass")

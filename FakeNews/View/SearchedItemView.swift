@@ -40,31 +40,16 @@ struct SearchedItemView: View {
                     .multilineTextAlignment(.leading)
                 
                 
-                
+                Spacer()
                 
             } //: HSTACK
             .padding(.horizontal, 10)
-            .padding(.top, 10)
-            Divider()
-                .padding(.horizontal, 10)
-            VStack{
-                HStack{
-                        Text("hurriyet.com")
-                            .font(.system(size: 15, design: .rounded))
-                            .fontWeight(.semibold)
-                            .foregroundColor(.gray)
-                            .padding(.bottom, 8)
-                            .padding(.horizontal, 10)
-                            .padding(.leading, 7)
-                    
-                    Spacer()
-                }
-                
-            }
+            .padding(.vertical, 10)
+            
+            
             
         } //: VSTACK
         .frame(width: 350)
-        .background(Color("Color 1"))
         .cornerRadius(12)
         
         
@@ -72,3 +57,10 @@ struct SearchedItemView: View {
        
     }
 }
+
+//struct SearchedItemView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SearchedItemView()
+//            .previewLayout(.sizeThatFits)
+//    }
+//}
