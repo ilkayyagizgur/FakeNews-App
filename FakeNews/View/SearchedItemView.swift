@@ -16,24 +16,26 @@ struct SearchedItemView: View {
     @State private var imageOffset: CGSize = CGSize(width: 0, height: 0)
     @State private var showAlert = false
     
-    let responseData: NewTaskItemView.ResponseData // Add this property
+    let responseData: NewTaskItemView.ResponseData
     
+    func setCompletion() {
+         item.completion = true
+    }
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack(spacing: 10) {
+        ZStack{
+            VStack(alignment: .leading) {
+                HStack(spacing: 10) {
                     Button(action: {
                         //showAlert = true
-                       
-                       
                     }, label: {
-                        if responseData.label == 1 {
+                        if item.label == 1 {
                             Image(systemName: "checkmark.circle.fill")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 40, height: 40)
                                 .foregroundColor(Color("ColorBlue"))
-                        } else {
+                        } else if item.label == 0{
                             Image(systemName: "exclamationmark.triangle.fill")
                                 .resizable()
                                 .scaledToFit()
@@ -42,28 +44,33 @@ struct SearchedItemView: View {
                         }
                     })//: BUTTON
                     .padding(.horizontal, 7)
+                    
+                    Text(item.orj_text ?? "not found")
+                        .font(.system(.title2, design: .serif))
+                        .fontWeight(.semibold)
+                        .lineLimit(2)
+                        .foregroundColor(Color("TextColor"))
+                        .multilineTextAlignment(.leading)
+                    
+                    Spacer()
+                } //: HSTACK
+                .padding(.horizontal, 10)
+                .padding(.vertical, 10)
                 
-                Text(item.orj_text ?? "not found")
-                    .font(.system(.title2, design: .serif))
-                    .fontWeight(.semibold)
-                    .lineLimit(2)
-                    .foregroundColor(Color("TextColor"))
-                    .multilineTextAlignment(.leading)
                 
                 
-                Spacer()
-                Text("Probability: \(responseData.prob)") // Use the responseData.label here
-                
-            } //: HSTACK
-            .padding(.horizontal, 10)
-            .padding(.vertical, 10)
+            } //: VSTACK
+            .frame(width: 350)
+            .cornerRadius(12)
             
-            
-            
-        } //: VSTACK
-        .frame(width: 350)
-        .cornerRadius(12)
-        
+        } //:ZTACK
+//        .onAppear {
+//            if responseData.label == 1 {
+//                item.completion = true
+//            } else if responseData.label == 0 {
+//                item.completion = false
+//            }
+//        }
         
         
        

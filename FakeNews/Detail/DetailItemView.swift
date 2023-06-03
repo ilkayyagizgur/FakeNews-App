@@ -12,7 +12,6 @@ struct DetailItemView: View {
     let fake: News
     @State private var showAlert = false
     @Environment(\.presentationMode) var presentationMode
-    @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     @Environment(\.openURL) var openURL
     //@State private var showWebView = false
     

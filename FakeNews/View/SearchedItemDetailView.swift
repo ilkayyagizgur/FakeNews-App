@@ -12,10 +12,9 @@ struct SearchedItemDetailView: View {
     @ObservedObject var item: Item
     @State private var showAlert = false
     @Environment(\.presentationMode) var presentationMode
-    @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     @Environment(\.openURL) var openURL
     //@State private var showWebView = false
-    let responseData: NewTaskItemView.ResponseData // Add this property
+    let responseData: NewTaskItemView.ResponseData
     
     var body: some View {
         

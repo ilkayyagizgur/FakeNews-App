@@ -16,7 +16,7 @@ struct NewTaskItemView: View {
     @State private var textEditorText: String = ""
     @Binding var isShowing: Bool
     @Binding var responseData: ResponseData?
-    
+    @ObservedObject var item: Item
     
     private var isButtonDisabled: Bool {
         textEditorText.isEmpty
@@ -29,11 +29,11 @@ struct NewTaskItemView: View {
         withAnimation {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
-            newItem.orj_text = textEditorText
-//            newItem.label =
+            newItem.orj_text = responseData?.data
             newItem.completion = false
+            newItem.label = Double(responseData?.label ?? 0)
             newItem.id = UUID()
-
+            print("item.label: \(newItem.label)")
             do {
                 try viewContext.save()
             } catch {
@@ -44,11 +44,13 @@ struct NewTaskItemView: View {
             
             textEditorText = ""
             isShowing = false
+            
         }
     }
     
     struct ResponseData: Codable {
-        // Define the properties that match the structure of the JSON response
+        let id: UUID
+        let data: String
         let label: Int
         let prob: Float
         // ...
@@ -65,7 +67,7 @@ struct NewTaskItemView: View {
         }
         
         // Create post request
-        let url = URL(string: "http://localhost:53136/predict")!
+        let url = URL(string: "http://localhost:56146/predict")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
@@ -93,15 +95,18 @@ struct NewTaskItemView: View {
         task.resume()
     }
     
+    
     func fetchData(){
             jsonpost { responseData in
                 if let responseData = responseData {
                     DispatchQueue.main.async {
                         self.responseData = responseData
+                       
                     }
-                    print(responseData.label)
-                    print(responseData.prob)
-                    
+//                    print(responseData.data)
+//                    print(responseData.label)
+//                    print(responseData.prob)
+
                 }
             }
         }
@@ -119,7 +124,7 @@ struct NewTaskItemView: View {
                 
                 Button(action: {
                     fetchData()
-                    
+//                    item.label = Double(responseData?.label ?? 1)
                     addItem()
                     
                 }, label: {
@@ -151,8 +156,13 @@ struct NewTaskItemView: View {
             .cornerRadius(16)
             .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.65), radius: 24)
             .frame(maxWidth: 640)
-        }//: VSTACK
+        } //: VSTACK
         .padding()
+        .onReceive(item.objectWillChange, perform: { _ in
+            if self.viewContext.hasChanges {
+                try? self.viewContext.save()
+            }
+        })
         
     }
 }

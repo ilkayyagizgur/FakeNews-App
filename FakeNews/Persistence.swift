@@ -34,6 +34,7 @@ struct PersistenceController {
             newItem.timestamp = Date()
             newItem.orj_text = "Sample News"
             newItem.completion = false
+            newItem.label = 0
             newItem.id = UUID()
 //        }
         do {

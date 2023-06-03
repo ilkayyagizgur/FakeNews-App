@@ -14,12 +14,13 @@ struct ContentView: View {
     @State private var imageOffset: CGSize = CGSize(width: 0, height: 0)
     @State private var showAlert = false
     @State private var showNewTaskItem: Bool = false
-//    @Binding var label: Int?
-//    let responseData: ResponseData
     @State private var responseData: NewTaskItemView.ResponseData? = nil
+    @Environment(\.colorScheme) var colorScheme
+    @State private var newItem: Item?
     
     struct ResponseData: Codable {
-        // Define the properties that match the structure of the JSON response
+        let id: UUID
+        let data: String
         let label: Int
         let prob: Float
         // ...
@@ -36,6 +37,7 @@ struct ContentView: View {
     
 
     private func deleteItems(offsets: IndexSet) {
+        print(items)
         withAnimation {
             offsets.map { items[$0] }.forEach(viewContext.delete)
 
@@ -67,23 +69,31 @@ struct ContentView: View {
                     
                     
                     if items.count == 0 {
-                        Image("emptyListImage")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 200, height: 200, alignment: .center)
-                        
-                        Text("Your List Is Empty")
+                        if colorScheme == .dark {
+                            Image("emptyListImageDark")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 200, height: 200, alignment: .center)
+                        } else {
+                            Image("emptyListImage")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 200, height: 200, alignment: .center)
+                        }
+                        Text("Your list is empty")
                             .font(.system(.headline))
                             .padding(.top, 20)
+                            .foregroundColor(Color("TextColor"))
                         
                         Text(" Click on the button to make your query")
                             .font(.system(.headline))
                             .padding(.top, 5)
+                            .foregroundColor(Color("TextColor"))
                         
                         Spacer()
                         
                     } else{
-                        List {
+                        List() {
                             ForEach(items) { item in
                                 NavigationLink {
                                     if let responseData = responseData {
@@ -135,6 +145,7 @@ struct ContentView: View {
                 .blur(radius: showNewTaskItem ? 8 : 0, opaque: false)
                 .transition(.move(edge: .bottom))
                 .animation(.easeOut(duration: 0.5), value: showNewTaskItem)
+//                .background(Color("NewsItemColor"))
                 
                 
                 
@@ -148,7 +159,7 @@ struct ContentView: View {
                             }
                         }
                     
-                    NewTaskItemView(isShowing: $showNewTaskItem, responseData: $responseData)
+                    NewTaskItemView(isShowing: $showNewTaskItem, responseData: $responseData, item: newItem ?? Item())
                 }
             } //: ZSTACK
             .background(Color("BackOfButton"))
