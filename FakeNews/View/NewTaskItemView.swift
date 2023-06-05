@@ -15,8 +15,7 @@ struct NewTaskItemView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @State private var textEditorText: String = ""
     @Binding var isShowing: Bool
-    @Binding var responseData: ResponseData?
-    @ObservedObject var item: Item
+    @State private var responseData: ResponseData? = nil
     
     private var isButtonDisabled: Bool {
         textEditorText.isEmpty
@@ -26,25 +25,25 @@ struct NewTaskItemView: View {
     // MARK: - FUNCTION
     
     private func addItem() {
+        guard let responseData = responseData else { return }
+        
         withAnimation {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
-            newItem.orj_text = responseData?.data
+            newItem.orj_text = responseData.data
             newItem.completion = false
-            newItem.label = Double(responseData?.label ?? 0)
-            newItem.id = UUID()
-            print("item.label: \(newItem.label)")
+            newItem.label = Double(responseData.label)
+            newItem.id = responseData.id
+            
             do {
                 try viewContext.save()
             } catch {
-                
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
             
             textEditorText = ""
             isShowing = false
-            
         }
     }
     
@@ -67,7 +66,7 @@ struct NewTaskItemView: View {
         }
         
         // Create post request
-        let url = URL(string: "http://localhost:56146/predict")!
+        let url = URL(string: "http://localhost:58658/predict")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
@@ -95,22 +94,16 @@ struct NewTaskItemView: View {
         task.resume()
     }
     
-    
-    func fetchData(){
-            jsonpost { responseData in
-                if let responseData = responseData {
-                    DispatchQueue.main.async {
-                        self.responseData = responseData
-                       
-                    }
-//                    print(responseData.data)
-//                    print(responseData.label)
-//                    print(responseData.prob)
-
+    func fetchData() {
+        jsonpost { responseData in
+            if let responseData = responseData {
+                DispatchQueue.main.async {
+                    self.responseData = responseData
+                    addItem()
                 }
             }
         }
-   //
+    }
     
     // MARK: - BODY
     var body: some View {
@@ -124,8 +117,7 @@ struct NewTaskItemView: View {
                 
                 Button(action: {
                     fetchData()
-//                    item.label = Double(responseData?.label ?? 1)
-                    addItem()
+
                     
                 }, label: {
                     Spacer()
@@ -158,19 +150,13 @@ struct NewTaskItemView: View {
             .frame(maxWidth: 640)
         } //: VSTACK
         .padding()
-        .onReceive(item.objectWillChange, perform: { _ in
-            if self.viewContext.hasChanges {
-                try? self.viewContext.save()
-            }
-        })
-        
     }
 }
 
-//struct NewTaskItemView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NewTaskItemView(isShowing: .constant(true))
-//            .background(Color.gray.edgesIgnoringSafeArea(.all))
-//    }
-//}
+struct NewTaskItemView_Previews: PreviewProvider {
+    static var previews: some View {
+        NewTaskItemView(isShowing: .constant(true))
+            .background(Color.gray.edgesIgnoringSafeArea(.all))
+    }
+}
 

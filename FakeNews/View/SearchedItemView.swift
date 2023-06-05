@@ -10,17 +10,13 @@ import SwiftUI
 struct SearchedItemView: View {
     
     @Environment(\.managedObjectContext) var viewContext
-    @ObservedObject var item: Item
+//    @ObservedObject var item: Item
     @State private var offset = CGSize.zero
     @State private var isAnimating: Bool = false
     @State private var imageOffset: CGSize = CGSize(width: 0, height: 0)
     @State private var showAlert = false
+    let item: Item
     
-    let responseData: NewTaskItemView.ResponseData
-    
-    func setCompletion() {
-         item.completion = true
-    }
     
     var body: some View {
         ZStack{

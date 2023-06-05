@@ -9,12 +9,12 @@ import SwiftUI
 
 struct SearchedItemDetailView: View {
     
-    @ObservedObject var item: Item
+//    @ObservedObject var item: Item
     @State private var showAlert = false
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.openURL) var openURL
     //@State private var showWebView = false
-    let responseData: NewTaskItemView.ResponseData
+    let item: Item
     
     var body: some View {
         
@@ -50,14 +50,14 @@ struct SearchedItemDetailView: View {
 //                            .foregroundColor(Color("ColorRed"))
 //                    } else {
                     
-                    if responseData.label == 1 {
+                    if item.label == 1 {
                         Image(systemName: "checkmark.circle.fill")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 150, height: 150)
                             .padding(.vertical, 20)
                             .foregroundColor(Color("ColorBlue"))
-                    } else {
+                    } else if item.label == 0 {
                         Image(systemName: "exclamationmark.triangle.fill")
                             .resizable()
                             .scaledToFit()

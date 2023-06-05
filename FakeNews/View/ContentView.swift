@@ -16,7 +16,6 @@ struct ContentView: View {
     @State private var showNewTaskItem: Bool = false
     @State private var responseData: NewTaskItemView.ResponseData? = nil
     @Environment(\.colorScheme) var colorScheme
-    @State private var newItem: Item?
     
     struct ResponseData: Codable {
         let id: UUID
@@ -31,7 +30,7 @@ struct ContentView: View {
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: false)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    public var items: FetchedResults<Item>
     
     // MARK: - FUNCTIONS
     
@@ -92,20 +91,14 @@ struct ContentView: View {
                         
                         Spacer()
                         
-                    } else{
+                    } else {
                         List() {
                             ForEach(items) { item in
                                 NavigationLink {
-                                    if let responseData = responseData {
-                                        SearchedItemDetailView(item: item, responseData: responseData)
-                                    }
+                                        SearchedItemDetailView(item: item)
                                 } label: {
-                                    if let responseData = responseData {
-                                        SearchedItemView(item: item, responseData: responseData)
+                                        SearchedItemView(item: item)
                                             .padding(.leading, 20)
-                                                }
-                                       
-    
                                 }
                             } //: FOR EACH
                             .onDelete(perform: deleteItems)
@@ -147,6 +140,7 @@ struct ContentView: View {
                 .animation(.easeOut(duration: 0.5), value: showNewTaskItem)
 //                .background(Color("NewsItemColor"))
                 
+               
                 
                 
                 if showNewTaskItem {
@@ -159,7 +153,7 @@ struct ContentView: View {
                             }
                         }
                     
-                    NewTaskItemView(isShowing: $showNewTaskItem, responseData: $responseData, item: newItem ?? Item())
+                    NewTaskItemView(isShowing: $showNewTaskItem)
                 }
             } //: ZSTACK
             .background(Color("BackOfButton"))
