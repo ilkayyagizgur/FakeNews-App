@@ -29,14 +29,13 @@ struct DetailItemView: View {
                     })//: BUTTON
                     
                     LogoView()
-                        .padding(.leading, 30)
                     
-                    Button(action: {
-                    }, label: {
-                        Image(systemName: "bookmark")
-                            .font(.system(size: 22, weight: .regular))
-                            .foregroundColor(Color("ColorRed"))
-                    })//: BUTTON
+//                    Button(action: {
+//                    }, label: {
+//                        Image(systemName: "bookmark")
+//                            .font(.system(size: 22, weight: .regular))
+//                            .foregroundColor(Color("ColorRed"))
+//                    })//: BUTTON
                     
                     Button(action: {
                         //showWebView.toggle()

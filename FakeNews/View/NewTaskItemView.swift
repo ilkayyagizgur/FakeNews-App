@@ -34,6 +34,7 @@ struct NewTaskItemView: View {
             newItem.completion = false
             newItem.label = Double(responseData.label)
             newItem.id = responseData.id
+            newItem.prob = responseData.prob
             
             do {
                 try viewContext.save()
@@ -66,7 +67,7 @@ struct NewTaskItemView: View {
         }
         
         // Create post request
-        let url = URL(string: "http://localhost:58658/predict")!
+        let url = URL(string: "http://localhost:49941/predict")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
@@ -143,7 +144,7 @@ struct NewTaskItemView: View {
             .padding(.horizontal)
             .padding(.vertical, 20)
             .background(
-                 Color.white
+                Color("Color 1")
             )
             .cornerRadius(16)
             .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.65), radius: 24)

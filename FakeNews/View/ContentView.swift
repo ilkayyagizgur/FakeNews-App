@@ -103,7 +103,7 @@ struct ContentView: View {
                             } //: FOR EACH
                             .onDelete(perform: deleteItems)
                             .listRowBackground(
-                                Rectangle().fill(.white)
+                                Rectangle().fill(Color("Color 1"))
                                     .frame(width: 350)
                                     .cornerRadius(12)
                                     .padding(5)

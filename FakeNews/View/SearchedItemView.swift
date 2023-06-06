@@ -51,13 +51,31 @@ struct SearchedItemView: View {
                     Spacer()
                 } //: HSTACK
                 .padding(.horizontal, 10)
-                .padding(.vertical, 10)
+                .padding(.top, 10)
+                
+                Divider()
+                    .padding(.horizontal, 10)
+                VStack{
+                    HStack{
+                        Text("Probability: \(item.prob)")
+                            .font(.system(size: 15, design: .rounded))
+                            .fontWeight(.semibold)
+                            .foregroundColor(.gray)
+                            .padding(.horizontal, 10)
+                            .padding(.leading, 7)
+                        Spacer()
+                    }
+                    
+                }
                 
                 
                 
             } //: VSTACK
             .frame(width: 350)
+            .background(Color("Color 1"))
             .cornerRadius(12)
+            
+            
             
         } //:ZTACK
 //        .onAppear {

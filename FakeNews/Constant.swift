@@ -11,6 +11,7 @@ import SwiftUI
 let colorBackground: Color = Color("Color")
 
 let fakes: [News] = Bundle.main.decode("csvjson.json")
+let fakesWeb: [SlideNews] = Bundle.main.decode("csvjsonWeb.json")
 
 
 let itemFormatter: DateFormatter = {

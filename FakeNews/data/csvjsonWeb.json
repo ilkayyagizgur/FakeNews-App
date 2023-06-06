@@ -1,0 +1,262 @@
+[
+    {
+        "id": 2,
+      "Orj_Text": "AFAD'dan yapılan açıklamada Kahramanmaraş'ta 4.4 büyüklüğünde bir deprem meydana geldi",
+      "Title": "Kahramanmaraş'ta 4.4 büyüklüğünde deprem",
+      "Image_URL": "https://im.haberturk.com/2023/06/05/ver1685985799/3597693_823x465.jpg",
+      "label": 1
+    },
+  
+  {
+      "id": 3,
+    "Orj_Text": "Samsun'un Bafra ilçesinde park halindeki otomobil yandı",
+    "Title": "Bafra'da park halindeki otomobil yandı",
+    "Image_URL": "https://im.haberturk.com/2023/06/05/ver1685988863/3597704_823x465.jpg",
+    "label": 1
+  },
+  {
+      "id": 37,
+    "Orj_Text": "Ankara'nın Gölbaşı ilçesinde otomobilin seyir halindeki TIR'a arkadan çarptığı kazada, 1 kişi öldü, 1 kişi ağır yaralandı",
+    "Title": "Otomobil TIR'a arkadan çarptı: 1 ölü, 1 ağır yaralı",
+    "Image_URL": "https://im.haberturk.com/2023/06/05/ver1685984045/3597692_823x465.jpg",
+    "label": 1
+  },
+  {
+      "id": 4,
+    "Orj_Text": "Çatalca Kuzey Marmara Otoyolu Yassıören mevkiinde Türk Hava Yolları (THY) personelini taşıyan servisle kamyon çarpıştı. Kazada servis şoförüyle birlikte 20'den fazla THY çalışanı yaralandı.",
+    "Title": "THY personelini taşıyan servisle kamyon çarpıştı",
+    "Image_URL": "https://im.haberturk.com/2023/06/05/ver1685981857/3597683_823x465.jpg",
+    "label": 1
+  },
+  {
+      "id": 5,
+    "Orj_Text": "Bursa'nın Orhangazi ilçesinde virajlı yolda sürücüsünün kontrolünden çıkan dört tekerlekli elektrikli motosiklet sulama kanalına devrildi. Kazada elektrikli motosiklette bulunan 33 yaşındaki Büşra Aksu, 59 yaşındaki Fatma Demir ve 30 yaşındaki Şeyma Çakmak yaralandı",
+    "Title": "Elektrikli motosiklet sulama kanalına uçtu: 3 yaralı",
+    "Image_URL": "https://im.haberturk.com/2023/06/05/ver1685982509/3597686_823x465.jpg",
+    "label": 1
+  },
+  {
+    "id": 1,
+    "Orj_Text": "AK Parti ve MHP, TBMM Başkanlığı'na aday olarak, İstanbul Milletvekili Numan Kurtulmuş'u gösterdi",
+    "Title": "AK Parti ve MHP'nin TBMM Başkanı adayı belli oldu",
+    "Image_URL": "https://im.haberturk.com/2023/06/05/ver1685988453/3597688_823x465.jpg",
+    "label": 1
+  },
+  {
+      "id": 6,
+    "Orj_Text": "Kilis'te silahlı terör örgütü PKK/YPG operasyonunda 1 şüpheli gözaltına alındı",
+    "Title": "Kilis'te terör örgütü PKK/YPG operasyonu",
+    "Image_URL": "https://im.haberturk.com/2023/06/05/ver1685980210/3597678_823x465.jpg",
+    "label": 1
+  },
+  {
+      "id": 7,
+    "Orj_Text": "Karabük'te, husumetli olduğu kayınpederi Nail Yılmaz'ın evini yakan 30 yaşındaki damat Ü.Y. gözaltına alındı",
+    "Title": "Husumetli olduğu kayınpederinin evini yaktı",
+    "Image_URL": "https://im.haberturk.com/2023/06/05/ver1685979189/3597676_823x465.jpg",
+    "label": 1
+  },
+  {
+      "id": 8,
+    "Orj_Text": "Sinop'ta Karasu Çayı'nın taşması sonucu Mertoğlu köyünde bulunan çilek serası arazisi zarar gördü. Çilek serasında bulunan evcil hayvanlar, vatandaşlar tarafından kendi imkanlarıyla kurtarıldı",
+    "Title": "Selde mahsur kalan evcil hayvanlar kurtarıldı",
+    "Image_URL": "https://im.haberturk.com/2023/06/05/ver1685980857/3597679_823x465.jpg",
+    "label": 1
+  },
+  {
+      "id": 9,
+    "Orj_Text": "Üsküdar'da denizde akıntıya kapılarak kaybolan lise öğrencisi için arama çalışması başlatıldı",
+    "Title": "Üsküdar'da denize giren genç akıntıya kapılarak kayboldu",
+    "Image_URL": "https://im.haberturk.com/2023/06/05/ver1685978813/3597674_823x465.jpg",
+    "label": 1
+  },
+  {
+      "id": 10,
+    "Orj_Text": "Kocaeli'nin Kandıra ilçesinde, akraba iki aile arasında çıkan kavgada dayısı Aydın Ç.´nin tabancayla rastgele açtığı ateşte 22 yaşındaki 3,5 aylık hamile İpek Çiçek öldü. Akrabası Azat O. (9) ise yaralandı. Ailelerden birinin oğullarına, diğer ailenin kızını istediği, olumsuz yanıt alınınca husumet oluştuğu, kavganın da bu nedenle çıktığı bildirildi",
+    "Title": "Kavgada 3,5 aylık hamile yeğenini öldürdü",
+    "Image_URL": "https://im.haberturk.com/2023/06/05/ver1685977669/3597669_823x465.jpg",
+    "label": 1
+  },
+  {
+      "id": 11,
+    "Orj_Text": "İstanbul Şişli'de, 2010 yılında Onur Yaser Can'ın gözaltında işkence gördüğü için intihara sürüklendiği iddiasına ilişkin \"Resmi evrakta sahtecilik\" ve \"Resmi belgeyi yok etme\" suçlarından 4´ü polis 5 sanığın yargılandığı davada karar çıktı. Mahkeme, 4 polisi \"Kamu görevlisinin resmi belgeyi yok etmesi ve bozması\" suçundan 6'şar yıl hapis cezasına çarptırdı. Bilirkişi olan sanık Zafer K.'nin ise beraatine karar verildi",
+    "Title": "Onur Yaser Can davasında karar açıklandı!",
+    "Image_URL": "https://im.haberturk.com/2023/06/05/ver1685969246/3597614_823x465.jpg",
+    "label": 1
+  },
+  {
+      "id": 12,
+    "Orj_Text": "CHP lideri Kemal Kılıçdaroğlu, tutuklu TİP Hatay Milletvekili Can Atalay için serbest bırakılması çağrısı yaptı",
+    "Title": "Kılıçdaroğlu: Can Atalay'ı derhal serbest bırakın",
+    "Image_URL": "https://im.haberturk.com/2023/06/05/ver1685963198/3597600_823x465.jpg",
+    "label": 1
+  },
+  {
+      "id": 13,
+    "Orj_Text": "Sağanak yurt genelinde sele neden olurken, vatandaşlar zor anlar yaşadı. Samsun'da taşkın ile sürüklenen Şükrü Köksal hayatını kaybetti. Amasya'da ise sel sularına kapılan araçtaki Murat Ekşi ve Zilal Şahin kayboldu. Kaybolan iki kişinin bulunması için arama çalışması başlatıldı. Kaybolan iki kişiden Murat Ekşi'nin cansız bedenine ulaşıldı. Kastamonu'da 2021 yılında sel felaketi yaşanan İnebolu ve Bozkurt ilçelerinde dün başlayan aralıklara etkili olan sağanak ve dolu nedeniyle taşkın durumuna karşı alarma geçildi. Samsun'da bir, Kastamonu ve Sinop'ta iki ilçede okullar tatil edildi. Kastamonu İnebolu'da, bodrum ve giriş katta oturanlar tahliye edildi. Öte yandan Meteoroloji Genel Müdürlüğü'nden yapılan açıklamaya göre, Samsun il genelinde ve Ordu çevrelerinde yarın akşam saatlerine kadar gök gürültülü sağanak bekleniyor. Denizli'de tren rayları ciddi hasar gördü. İşte yurttan sel manzaraları...",
+    "Title": "2 can kaybı, 1 kayıp var! Kastamonu için taşkın alarmı! Birçok kenti sel vurdu!",
+    "Image_URL": "https://im.haberturk.com/2023/06/05/ver1685983392/3597501_823x465.jpg",
+    "label": 1
+  },
+  {
+      "id": 14,
+    "Orj_Text": "Batman'da iki grup arasında çıkan tartışma silahlı kavgaya dönüştü. Kavgada başından silahla vurulan genç, hastanede yaşamını yitirdi",
+    "Title": "Kavgada başından vurulan genç öldü",
+    "Image_URL": "https://im.haberturk.com/2023/06/05/ver1685968653/3597622_823x465.jpg",
+    "label": 1
+  },
+  {
+      "id": 15,
+    "Orj_Text": "Gaziantep'te, tekerlekli sandalyesi çalınan doğuştan engelli 5 yaşındaki Merve Hazal Bülbül´e ismi öğrenilemeyen bir hayırsever kaldığı konteynerin önüne tekerlekli sandalye bıraktı. Sabah dışarı çıktıklarında yeni tekerlekli sandalye görünce şaşıran Merve´nin anneannesi Medine Bülbül, \"Bir hayırsever mağduriyetimizin haber yapılmasından sonra duymuş ve kapımızın önüne tekerlekli sandalye bırakıp gitmiş. Hayırseveri tanımıyorum. Görenler genç birisi diyor\" dedi",
+    "Title": "Merve doğuştan engelliydi! Sandalyesini çaldılar! Görünmez kahraman!",
+    "Image_URL": "https://im.haberturk.com/2023/06/05/ver1685963517/3597594_823x465.jpg",
+    "label": 1
+  },
+  {
+      "id": 16,
+    "Orj_Text": "Sivas'ta sabah saatlerinde feci bir olay meydana geldi. Kentte bir köyde 6 yerin birden kundaklandığı iddia edildi. Çıkan yangınlarda 13 büyükbaş hayvan ölürken 1 ev ile 5 ahır küle döndü",
+    "Title": "Köyü alevler sardı! 6 yerde birden yangın çıktı",
+    "Image_URL": "https://im.haberturk.com/2023/06/05/ver1685965516/3597579_823x465.jpg",
+    "label": 1
+  },
+  {
+      "id": 17,
+    "Orj_Text": "Muğla’nın tatil beldesi Marmaris’e yatıyla tatile gelen İsrailli turist kadının ‘Toy poodle’ cinsi köpeği kayboldu. Eğitim görevlisi Kristin Shamshoum kaybolan köpeği için 2 bin Euro ödül koydu ve polise gidip kayıp başvurusunda bulundu. Kamera görüntülerinden iz süren polis, kayıp köpeği saatler sonra kimin aldığını tespit etti",
+    "Title": "Marmaris'te kayıp köpek operasyonu",
+    "Image_URL": "https://im.haberturk.com/2023/06/05/ver1685965564/3597607_823x465.jpg",
+    "label": 1
+  },
+  {
+      "id": 18,
+    "Orj_Text": "Şanlıurfa'da İhsan Diş, husumetli olduğu kişinin silahlı saldırısında ağır yaralandı. Diş, kaldırıldığı hastanede kurtarılamadı",
+    "Title": "Husumetlisinin silahlı saldırısında öldü",
+    "Image_URL": "https://im.haberturk.com/2023/06/05/ver1685955563/3597571_823x465.jpg",
+    "label": 1
+  },
+  {
+      "id": 19,
+    "Orj_Text": "Bursa'da cezaevinden yeni çıkan genç, evde çıkan tartışmada üvey babasını ve araya giren annesini bıçakladı",
+    "Title": "Cezaevinden çıktı, üvey babası ve annesini bıçakladı",
+    "Image_URL": "https://im.haberturk.com/2023/06/05/ver1685954993/3597568_823x465.jpg",
+    "label": 1
+  },
+  {
+      "id": 20,
+    "Orj_Text": "Son dakika haberine göre; İçişleri Bakanı Ali Yerlikaya, Karadeniz'de meydana gelen sel felaketiyle ilgili Samsun'da açıklama yaptı.",
+    "Title": "Karadeniz'i sel vurdu: 2 can kaybı",
+    "Image_URL": "https://i.cnnturk.com/i/cnnturk/75/550x378/647e09d2ae0a8f00bca39040.jpg",
+    "label": 1
+  },
+  {
+      "id": 21,
+    "Orj_Text": "Hulusi Akar, görevini Cumartesi günü açıklanan yeni kabinede Milli Savunma Bakanı olarak ilan edilen Yaşar Güler'e teslim ediyor.",
+    "Title": "Savunma Bakanlığı'nda devir teslim",
+    "Image_URL": "https://i.cnnturk.com/i/cnnturk/75/550x378/647df714ae0a8f00bca38f89.jpg",
+    "label": 1
+  },
+  {
+      "id": 22,
+    "Orj_Text": "Liselere geçiş sistemi sınavı olan LGS tamamlandı. 1 milyondan fazla öğrenci, istediği liseye girebilmek için dakikalarca ter döktü. Şimdi gözler sonuçlarda. Peki sınav sonuçları ne zaman açıklanacak? Sonuçlara itiraz etmek isteyenler ne yapacak?",
+    "Title": "LGS sonuçları ne zaman açıklanacak?",
+    "Image_URL": "https://i.cnnturk.com/i/cnnturk/75/550x378/647e2210a46860198492c30c.jpg",
+    "label": 1
+  },
+  {
+      "id": 23,
+    "Orj_Text": "Fenerbahçe Başkanı Ali Koç, kulübün resmi internet sitesinden açıklama yayımlayarak, başkan adayı çıkması durumunda olağanüstü seçimli genel kurula gidileceğini ifade etti.",
+    "Title": "Ali Koç'tan Genel Kurul çağrısına yanıt",
+    "Image_URL": "https://i.cnnturk.com/i/cnnturk/75/550x378/647e101cae0a8f00bca39065.jpg",
+    "label": 1
+  },
+  {
+      "id": 24,
+    "Orj_Text": "ABD Dışişleri Bakanı Antony Blinken, Amerikan İsrail Kamu İşleri Komitesi (AIPAC) tarafından düzenlenen etkinlikte ABD’nin İsrail-Filistin ihtilafında iki devletli çözüme olan bağlılığını yineledi.",
+    "Title": "Blinken'dan dikkat çeken İran açıklaması",
+    "Image_URL": "https://i.cnnturk.com/i/cnnturk/75/550x378/647e06e5ae0a8f00bca39009.jpg",
+    "label": 1
+  },
+  {
+      "id": 25,
+    "Orj_Text": "İstanbul Sultangazi'de bulunan bir üst geçit, hafriyat kamyonunun çarpması sonucu hasar aldı. İstanbul Büyükşehir Belediyesi ekipleri köprüyü yıktı, yeniden yapmak için çalışmalara başladı. Ancak iddiaya göre köprüdeki çalışmalar yarım kaldı. Esnaf ve yayalar bu durumdan şikayetçi.",
+    "Title": "İstanbul'da bitmeyen üst geçit isyanı",
+    "Image_URL": "https://i.cnnturk.com/i/cnnturk/75/550x378/647e0236a46860198492c2a8.jpg",
+    "label": 1
+  },
+  {
+      "id": 26,
+    "Orj_Text": "Ev kadınlarının emekli olabilmesi için çalışmalar sürüyor. Hayata geçirilecek olan “Aile Koruma Kalkanı” programı neleri kapsıyor? Emekli olmak isteyenler ne kadar prim ödeyecek? Detayları CNN TÜRK Muhabiri Ümit Uzun, SGK Uzmanı Emin Yılmaz ile aktardı.",
+    "Title": "Ev kadınları nasıl emekli olacak?",
+    "Image_URL": "https://i.cnnturk.com/i/cnnturk/75/550x378/647df212ae0a8f00bca38f73.jpg",
+    "label": 1
+  },
+  {
+      "id": 27,
+    "Orj_Text": "Mehmet Şimşek'in Hazine ve Maliye Bakanı olarak atanmasının ardından kulislere yansıyan bilgilere göre Merkez Bankası'nın başına Hafize Gaye Erkan’ın geleceği konuşuluyor. Yurt dışında önemli bir finans kariyerine sahip olan Erkan’ın ise Cumhurbaşkanı Recep Tayyip Erdoğan tarafından kabul edilmesi bekleniyor. Erkan, atanması halinde Merkez Bankası tarihindeki ilk kadın başkan olacak. Detayları Beykent Üniversitesi Öğretim Görevlisi Prof. Dr. Murat Ferman ve Ekonomist Abdülkadir Develi aktardı.",
+    "Title": "Paranın patronu mu oluyor? İşte Türkiye'nin konuştuğu isim!",
+    "Image_URL": "https://i.cnnturk.com/i/cnnturk/75/550x378/647dd79fa46860198492c150.jpg",
+    "label": 1
+  },
+  {
+      "id": 28,
+    "Orj_Text": "Türk kantocu, ses sanatçısı ve tiyatro, sinema oyuncusu Nurhan Damcıoğlu (82) hayatını kaybetti.",
+    "Title": "Nurhan Damcıoğlu hayatını kaybetti",
+    "Image_URL": "https://i.cnnturk.com/i/cnnturk/75/550x378/647e2440ae0a8f00bca390f4.jpg",
+    "label": 1
+  },
+  {
+      "id": 29,
+    "Orj_Text": "Mayıs ayı enflasyon rakamları ile Temmuz zammı için 5 aylık zam oranı kesinleşti. Mayıs ayında enflasyon artışı aylık yüzde 0,04 ve yıllık yüzde 39,59 oldu. Asgari ücret, emekli ve memur Temmuz zammı ile diğer ekonomi düzenlemeleri için son güncellemeler...",
+    "Title": "5 aylık oran kesinleşti!",
+    "Image_URL": "https://i.cnnturk.com/i/cnnturk/75/550x378/647dd1a5ae0a8f00bca38eb2.jpg",
+    "label": 1
+  },
+  {
+      "id": 30,
+    "Orj_Text": "Son olarak Hollanda'da Fortuna Sittard forması giyen Burak Yılmaz, 38 yaşında futbol kariyerine nokta koydu.",
+    "Title": "Burak Yılmaz futbolu bıraktı",
+    "Image_URL": "https://i.cnnturk.com/i/cnnturk/75/550x378/647de429ae0a8f00bca38f3e.jpg",
+    "label": 1
+  },
+  {
+      "id": 31,
+    "Orj_Text": "Nohudun kavrulmasıyla elde edilen ve özellikle ülkemizde en çok sevilen atıştırmalıklardan biri olan leblebi, açlığı bastırması sebebiyle çokça tercih ediliyor ama aslında leblebinin faydaları sadece bulunla sınırlı kalmıyor.",
+    "Title": "Damar daralmasını önleyen tek besin! Günde bir avuç tüketmek yetiyor",
+    "Image_URL": "https://i.cnnturk.com/i/cnnturk/75/550x378/647e1f35ae0a8f00bca390be.jpg",
+    "label": 1
+  },
+  {
+      "id": 32,
+    "Orj_Text": "Güneydoğu'nun geleneksel içeceği meyan şerbeti, havaların ısınmaya başladığı Gaziantep'te damakları tatlandırmaya başladı. Kendine has tadı, rengi, köpüğü ve doğallığı ile yoğun ilgi gören meyan şerbeti, gazlı ve asitli içeceklere de en büyük alternatif oluyor.",
+    "Title": "Kavurucu sıcakların vazgeçilmezi!",
+    "Image_URL": "https://i.cnnturk.com/i/cnnturk/75/550x378/647dc6d1a46860198492c0ba.jpg",
+    "label": 1
+  },
+  {
+      "id": 33,
+    "Orj_Text": "Vücudumuzda ihmal edilmemesi gereken en değerli besin ögesinin su olduğunu biliyor muydunuz? Vücudunuza ihtiyaç duyduğu kadar su sağlamadığınız zaman, nasıl bir yıkım getirdiğinin farkında mısınız?",
+    "Title": "Suyu doğru zamanda içiyor muyuz?",
+    "Image_URL": "https://i.cnnturk.com/i/cnnturk/75/550x378/647dc670a46860198492c0b4.jpg",
+    "label": 1
+  },
+  {
+      "id": 34,
+    "Orj_Text": "Ece Seçkin, uzun süredir mücadele ettiği İdiyopatik Alerji hastalığıyla ilgili bilgi verdi.",
+    "Title": "Ece Seçkin hastalığı hakkında konuştu",
+    "Image_URL": "https://i.cnnturk.com/i/cnnturk/75/550x378/647e1468ae0a8f00bca39080.jpg",
+    "label": 1
+  },
+  {
+      "id": 35,
+    "Orj_Text": "Ünlü oyuncu \"Bu yaz kafam rahat\" notu ile yayınladığı pozlarında yeni imajıyla dikkat çekti.",
+    "Title": "Seda Akman son haliyle şoke etti! Görenler tanıyamadı",
+    "Image_URL": "https://i.cnnturk.com/i/cnnturk/75/550x378/647e018cae0a8f00bca38fee.jpg",
+    "label": 1
+  },
+  {
+      "id": 36,
+    "Orj_Text": "Miss Turkey yarışmasında elde ettiği başarıyla tanınan Şevval Şahin, yaz sezonunu açtı. Siyah bikinisiyle güneşlenirken çekilen karelerini takipçileriyle de paylaşan ünlü mankene yorum yağdı. Şahin'in pozları kısa sürede binlerce beğeni aldı.",
+    "Title": "Şevval Şahin bikinili pozlarıyla beğeni topladı",
+    "Image_URL": "https://i.cnnturk.com/i/cnnturk/75/550x378/647dfbf6ae0a8f00bca38fb4.jpg",
+    "label": 1
+  }
+]
