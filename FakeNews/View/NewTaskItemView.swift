@@ -67,7 +67,7 @@ struct NewTaskItemView: View {
         }
         
         // Create post request
-        let url = URL(string: "http://localhost:49941/predict")!
+        let url = URL(string: "http://localhost:56763/predict")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         

@@ -9,7 +9,8 @@ import SwiftUI
 
 struct DetailItemView: View {
     
-    let fake: News
+//    let fake: News
+    let fake : WebNews
     @State private var showAlert = false
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.openURL) var openURL
@@ -39,7 +40,7 @@ struct DetailItemView: View {
                     
                     Button(action: {
                         //showWebView.toggle()
-                        openURL(URL(string: fake.DocumentIdentifier)!)
+//                        openURL(URL(string: fake.DocumentIdentifier)!)
                     }, label: {
                         Image(systemName: "safari")
                             .font(.system(size: 22, weight: .regular))
@@ -54,35 +55,70 @@ struct DetailItemView: View {
                 .padding(.horizontal, 20)
                 .padding(.vertical, 19)
                 .background(Color("Color"))
-                .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
+//                .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
                 
                 ScrollView(.vertical, showsIndicators: false) {
-                    if (fake.label == 0) {
-                        Image(systemName: "exclamationmark.triangle.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 150, height: 150)
-                            .padding(.vertical, 20)
-                            .foregroundColor(Color("ColorRed"))
-                    } else {
-                        Image(systemName: "checkmark.circle.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 150, height: 150)
-                            .padding(.vertical, 20)
-                            .foregroundColor(Color("ColorBlue"))
-                    }
-                
-                Text(fake.Orj_Text)
-                    .font(.system(size: 30, design: .serif))
-                    .fontWeight(.semibold)
-                    .lineLimit(4)
-                    .padding(.horizontal, 20)
-                    .multilineTextAlignment(.leading)
+                    
+                    AsyncImage(url: URL(string: fake.Image_URL), scale: 2, content: { image in
+                        image.resizable()
+                    }, placeholder: {
+                        ProgressView()
+                    })
+                    .scaledToFit()
+                    .overlay(
+                        VStack {
+                            
+                           Spacer()
+                            
+                            HStack{
+                        if (fake.label == 0) {
+                            Image(systemName: "exclamationmark.triangle.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 50, height: 50)
+                                .padding(.leading, 10)
+                                .padding(.bottom, 10)
+                                .foregroundColor(Color("ColorRed"))
+                                .background(
+                                    Circle()
+                                        .fill(Color("Color"))
+                                        .frame(width: 40, height: 40, alignment: .center)
+                                )
+//                                .shadow(color: Color.black, radius: 4, x: 0, y: 0)
+                        } else {
+                            Image(systemName: "checkmark.circle.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(Color("ColorBlue"))
+                                .background(
+                                    Circle()
+                                        .fill(Color("Color"))
+                                        .frame(width: 50, height: 50, alignment: .center)
+                                )
+//                                    .shadow(color: Color.black, radius: 4, x: 0, y: 0)
+                                .padding(.leading)
+                                .padding(.bottom)
+                                
+//                                .shadow(color: Color.black, radius: 4, x: 0, y: 0)
+                        }
+                            
+                            
+                        Spacer()
+                            } //: hstack
+                        } //: vstack
+                    )
+                        
+                        Text(fake.Title)
+                            .font(.system(size: 30, design: .serif))
+                            .fontWeight(.semibold)
+                            .lineLimit(4)
+                            .padding(.horizontal, 20)
+                            .multilineTextAlignment(.center)
                     
                 
-                Divider()
-                    .padding(.horizontal, 10)
+//                Divider()
+//                    .padding(.horizontal, 10)
                 
                 
                     
@@ -133,7 +169,7 @@ struct DetailItemView: View {
 }
 
 struct DetailItemView_Previews: PreviewProvider {
-    static let fakes: [News] = Bundle.main.decode("csvjson.json")
+    static let fakes: [WebNews] = Bundle.main.decode("csvjsonWebFull.json")
     
     static var previews: some View {
         DetailItemView(fake: fakes[1])

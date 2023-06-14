@@ -9,9 +9,10 @@ import SwiftUI
 
 struct HomeView: View {
     
-    let fakes: [News] = Bundle.main.decode("csvjson.json")
     let fakesWeb: [SlideNews] = Bundle.main.decode("csvjsonWeb.json")
+    let fakesWebFull: [WebNews] = Bundle.main.decode("csvjsonWebFull.json")
     @State var allButtonClicked: Bool = false
+    @State private var refreshNewsData: [refreshNews] = []
     
     let gridLayout: [GridItem] = Array(repeating: GridItem(.flexible()), count: 1)
     
@@ -23,6 +24,56 @@ struct HomeView: View {
         static var fakeclickedBackground: Color = Color.clear
         
     }
+    
+    struct refreshNews: Codable, Identifiable {
+        let id: String
+        let Orj_Text: String
+        let Title: String
+        let Image_URL: String
+        let label: Int
+        let prob: Float
+    }
+    
+    func fetchNews() {
+            // 1. Create the URL for the API endpoint
+            guard let url = URL(string: "http://localhost:57166/refresh") else {
+                return
+            }
+            
+            // 2. Create a URLSession and a data task
+            URLSession.shared.dataTask(with: url) { (data, response, error) in
+                // 3. Check if there was an error
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                    return
+                }
+                
+                // 4. Check if there is data
+                guard let data = data else {
+                    print("No data received")
+                    return
+                }
+                
+                do {
+                    // 5. Decode the JSON data using Codable
+                    let decoder = JSONDecoder()
+                    let webnewsData = try decoder.decode([refreshNews].self, from: data)
+                    if webnewsData.isEmpty {
+                        print("empty")
+                    }
+                    print("printing web data\(webnewsData)")
+                   
+                    
+                    // 6. Update the state variable on the main thread
+                    DispatchQueue.main.async {
+                        self.refreshNewsData = webnewsData
+                    }
+                } catch {
+                    print("Error decoding JSON: \(error.localizedDescription)")
+                }
+            }.resume() // 7. Start the data task
+        }
+    
     
     var body: some View {
         NavigationView{
@@ -40,95 +91,65 @@ struct HomeView: View {
                             
                             withAnimation(.easeIn) {
                                 LazyVGrid(columns: gridLayout, alignment: .center, spacing: 10) {
-                                    
-                                    
-                                    SlideNewsView()
-                                        .padding(.horizontal, 5)
-                                        .frame(width: 400, height: 230)
-                                    
-//                                    HStack{
-//
-//                                        Button(action: {
-//                                            allButtonClicked.toggle()
-//                                            
-//                                            if allButtonClicked {
-//                                                Constants.allclickedBackground = Color("ColorRed")
-//                                            } else {
-//                                                Constants.allclickedBackground = Color.clear
-//                                            }
-//
-//                                        }, label: {
-//
-//                                            Text("All")
-//                                                .font(.title2)
-//                                                .fontWeight(.bold)
-//                                                .foregroundColor(allButtonClicked ? Color.white : Color("ColorRed"))
-//
-//
-//                                        })//: BUTTON
-//                                        .frame(width: 50)
-//                                        .font(.system(size: 18, weight: .semibold, design: .rounded))
-//                                        .padding(.horizontal, 10)
-//                                        .frame(minWidth: 40, minHeight: 35)
-//                                        .background(
-//                                            Capsule().stroke(Color.red, lineWidth: 2))
-//                                        .background(
-//                                            Constants.allclickedBackground.clipShape(Capsule()))
-//
-//
-//
-//
-//                                        Button(action: {
-//
-//                                        }, label: {
-//                                            Text("True")
-//                                                .font(.title2)
-//                                                .fontWeight(.bold)
-//                                                .foregroundColor(allButtonClicked ? Color.white : Color("ColorRed"))
-//
-//                                        })//: BUTTON
-//                                        .frame(width: 50)
-//                                        .font(.system(size: 18, weight: .semibold, design: .rounded))
-//                                        .padding(.horizontal, 10)
-//                                        .frame(minWidth: 40, minHeight: 35)
-//                                        .background(
-//                                            Capsule().stroke(Color.red, lineWidth: 2))
-//                                        .background(
-//                                            Constants.trueclickedBackground.clipShape(Capsule()))
-//
-//
-//                                        Button(action: {
-//
-//                                        }, label: {
-//
-//
-//                                            Text("Fake")
-//                                                .font(.title2)
-//                                                .fontWeight(.bold)
-//                                                .foregroundColor(allButtonClicked ? Color.white : Color("ColorRed"))
-//
-//                                        })//: BUTTON
-//                                        .frame(width: 50)
-//                                        .font(.system(size: 18, weight: .semibold, design: .rounded))
-//                                        .padding(.horizontal, 10)
-//                                        .frame(minWidth: 40, minHeight: 35)
-//                                        .background(
-//                                            Capsule().stroke(Color.red, lineWidth: 2))
-//                                        .background(
-//                                            Color.white.clipShape(Capsule()))
-//                                    } //: HSTACK
-//                                    .padding()
-                                    
-                                    
-                                    ForEach(fakes) { fake in
+                                    Section(header:
+                                       HStack {
+                                        
+//                                        Image(systemName: "globe")
+//                                            .resizable()
+//                                            .scaledToFit()
+//                                            .frame(width: 40, height: 40, alignment: .center)
+//                                            .padding(.leading)
+                                        
+                                        Text("Top Stories")
+                                            .fontWeight(.heavy)
+                                            .font(.largeTitle)
+                                            .foregroundColor(Color("ColorRed"))
+                                        
+                                        Spacer()
+                                    } //: HSTACK
+                                        .padding(.leading)
+                                        .padding(.top)
+                                            
+                                            
+                                    ) {
+                                        SlideNewsView()
+                                            .padding(.horizontal, 5)
+                                            .frame(width: 400, height: 230)
+                                    } // SECTION1
+                                    Section(header:
+                                        HStack {
+                                        
+                                        Image("HeaderFakeIcon")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 40, height: 40, alignment: .center)
+                                            .padding(.leading)
+                                        
+                                       
+                                        
+                                        Text("News")
+                                            .fontWeight(.heavy)
+                                            .font(.largeTitle)
+                                            .foregroundColor(Color("ColorRed"))
+                                        
+                                        Spacer()
+                                        
+                                    } //: HSTACK
+                                            
+                                    ) {
+                                    ForEach(fakesWebFull) { fake in
                                         NavigationLink(destination: DetailItemView(fake: fake)) {
                                             NewsItemView(fake: fake)
                                                 .padding(.vertical, 8)
                                         }//:LINK
                                     }//: LOOP
+                                }
                                 }//: GRID
                             } //: ANIMATION
                         } //: SCROLL
+                        .refreshable {
+                            fetchNews()
+                        }
                     } //: VSTACK
                 )
         } //: NAVIGATION
