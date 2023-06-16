@@ -68,31 +68,7 @@ struct NewsItemView: View {
             .padding(.top, 10)
             Divider()
                 .padding(.horizontal, 10)
-//            VStack{
-//                HStack{
-//                    if(fake.Source == "PopularNewsSites") {
-//                        Text("resource not found")
-//                            .font(.system(size: 15, design: .rounded))
-//                            .fontWeight(.semibold)
-//                            .foregroundColor(.gray)
-//                            .padding(.bottom, 8)
-//                            .padding(.horizontal, 10)
-//                            .padding(.leading, 7)
-//                    } else {
-//                        Text("\(fake.Source.lowercased()).com")
-//                            .font(.system(size: 15, design: .rounded))
-//                            .fontWeight(.semibold)
-//                            .foregroundColor(.gray)
-//                            .padding(.bottom, 8)
-//                            .padding(.horizontal, 10)
-//                            .padding(.leading, 7)
-//                    }
-//                    Spacer()
-//                }
-//
-//            }
-            
-            
+
         } //: VSTACK
         .frame(width: 350)
         .background(Color("Color 1"))

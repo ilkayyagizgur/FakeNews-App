@@ -14,6 +14,12 @@ struct HomeView: View {
     @State var allButtonClicked: Bool = false
     @State private var refreshNewsData: [refreshNews] = []
     
+    @State private var usdToTry: Double = 0.0
+    @State private var eurToTry: Double = 0.0
+    
+    let endpoint = "https://api.exchangerate-api.com/v4/latest/TRY"
+    let apiKey = "68d12959aa7cb973391d9e6f"
+    
     let gridLayout: [GridItem] = Array(repeating: GridItem(.flexible()), count: 1)
     
     struct Constants {
@@ -74,6 +80,39 @@ struct HomeView: View {
             }.resume() // 7. Start the data task
         }
     
+    func fetchExchangeRates() {
+            let urlString = "\(endpoint)?access_key=\(apiKey)"
+            guard let encodedURLString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+                  let url = URL(string: encodedURLString) else {
+                print("Invalid URL")
+                return
+            }
+
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                    return
+                }
+
+                if let data = data {
+                    do {
+                        let exchangeRates = try JSONDecoder().decode(ExchangeRates.self, from: data)
+                        DispatchQueue.main.async {
+                            self.usdToTry = exchangeRates.rates["USD"] ?? 0.0
+                            self.eurToTry = exchangeRates.rates["EUR"] ?? 0.0
+                        }
+                    } catch {
+                        print("Error decoding JSON: \(error.localizedDescription)")
+                    }
+                }
+            }.resume()
+        }
+    
+
+    struct ExchangeRates: Codable {
+        let rates: [String: Double]
+    }
+    
     
     var body: some View {
         NavigationView{
@@ -94,20 +133,19 @@ struct HomeView: View {
                                     Section(header:
                                        HStack {
                                         
-//                                        Image(systemName: "globe")
-//                                            .resizable()
-//                                            .scaledToFit()
-//                                            .frame(width: 40, height: 40, alignment: .center)
-//                                            .padding(.leading)
+                                        Image("newspaper")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 40, height: 40, alignment: .center)
+                                            .padding(.leading)
                                         
-                                        Text("Top Stories")
+                                        Text("Hikayeler")
                                             .fontWeight(.heavy)
                                             .font(.largeTitle)
                                             .foregroundColor(Color("ColorRed"))
                                         
                                         Spacer()
                                     } //: HSTACK
-                                        .padding(.leading)
                                         .padding(.top)
                                             
                                             
@@ -116,6 +154,18 @@ struct HomeView: View {
                                             .padding(.horizontal, 5)
                                             .frame(width: 400, height: 230)
                                     } // SECTION1
+                                    
+                                    Section {
+                                        HStack{
+                                            CurrencyView(currencyValue: 1/usdToTry, labelText: "DOLAR", currencyImage: "dollarsign")
+                                                .padding(.bottom)
+                                                .padding(.trailing, 8)
+                                            
+                                            CurrencyView(currencyValue: 1/eurToTry, labelText: "EURO",currencyImage: "eurosign")
+                                                .padding(.bottom)
+                                        }
+                                    } // SECTION2
+                                    
                                     Section(header:
                                         HStack {
                                         
@@ -127,7 +177,7 @@ struct HomeView: View {
                                         
                                        
                                         
-                                        Text("News")
+                                        Text("Haberler")
                                             .fontWeight(.heavy)
                                             .font(.largeTitle)
                                             .foregroundColor(Color("ColorRed"))
@@ -143,7 +193,7 @@ struct HomeView: View {
                                                 .padding(.vertical, 8)
                                         }//:LINK
                                     }//: LOOP
-                                }
+                                } //: SECTION3
                                 }//: GRID
                             } //: ANIMATION
                         } //: SCROLL
@@ -151,6 +201,7 @@ struct HomeView: View {
                             fetchNews()
                         }
                     } //: VSTACK
+                        .onAppear(perform: fetchExchangeRates)
                 )
         } //: NAVIGATION
         .frame(maxWidth: 640)

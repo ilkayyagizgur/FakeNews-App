@@ -12,7 +12,7 @@ struct LogoView: View {
             HStack(spacing: 4){
                     Spacer()
                 
-                Text("Fake".uppercased())
+                Text("Yalan".uppercased())
                         .font(.title3)
                         .fontWeight(.black)
                         .foregroundColor(Color("ColorRed"))
@@ -24,7 +24,7 @@ struct LogoView: View {
                     .padding(.horizontal, 5)
                 
                     
-                Text("News".uppercased())
+                Text("Haber".uppercased())
                         .font(.title3)
                         .fontWeight(.black)
                         .foregroundColor(.blue)
