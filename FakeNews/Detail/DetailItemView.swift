@@ -42,7 +42,7 @@ struct DetailItemView: View {
                         //showWebView.toggle()
 //                        openURL(URL(string: fake.DocumentIdentifier)!)
                     }, label: {
-                        Image(systemName: "safari")
+                        Image(systemName: "bookmark")
                             .font(.system(size: 22, weight: .regular))
                             .foregroundColor(Color("ColorRed"))
                     })//: BUTTON

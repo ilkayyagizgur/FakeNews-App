@@ -121,7 +121,8 @@ struct HomeView: View {
                 .overlay(
                     VStack {
                         LogoView()
-                            .padding(.vertical, 20)
+                            .padding(.top, 10)
+                            .padding(.bottom, 20)
                             .background(Color("Color"))
                             .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
                         
@@ -136,12 +137,12 @@ struct HomeView: View {
                                         Image("newspaper")
                                             .resizable()
                                             .scaledToFit()
-                                            .frame(width: 40, height: 40, alignment: .center)
+                                            .frame(width: 30, height: 30, alignment: .center)
                                             .padding(.leading)
                                         
                                         Text("Hikayeler")
                                             .fontWeight(.heavy)
-                                            .font(.largeTitle)
+                                            .font(.title)
                                             .foregroundColor(Color("ColorRed"))
                                         
                                         Spacer()
@@ -155,7 +156,7 @@ struct HomeView: View {
                                             .frame(width: 400, height: 230)
                                     } // SECTION1
                                     
-                                    Section {
+                                    ScrollView(.horizontal) {
                                         HStack{
                                             CurrencyView(currencyValue: 1/usdToTry, labelText: "DOLAR", currencyImage: "dollarsign")
                                                 .padding(.bottom)
@@ -165,6 +166,7 @@ struct HomeView: View {
                                                 .padding(.bottom)
                                         }
                                     } // SECTION2
+                                    .padding(.leading)
                                     
                                     Section(header:
                                         HStack {
@@ -172,14 +174,14 @@ struct HomeView: View {
                                         Image("HeaderFakeIcon")
                                             .resizable()
                                             .scaledToFit()
-                                            .frame(width: 40, height: 40, alignment: .center)
+                                            .frame(width: 30, height: 30, alignment: .center)
                                             .padding(.leading)
                                         
                                        
                                         
                                         Text("Haberler")
                                             .fontWeight(.heavy)
-                                            .font(.largeTitle)
+                                            .font(.title)
                                             .foregroundColor(Color("ColorRed"))
                                         
                                         Spacer()
