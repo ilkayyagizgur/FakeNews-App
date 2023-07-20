@@ -14,7 +14,11 @@ struct LoginPageView: View {
         @Published var showMainView = false
     }
     
+    
+
+    
     @StateObject private var coordinator = LoginCoordinator()
+    @EnvironmentObject var userData: UserData
     
     @State private var showRegister = false
     @State private var username: String = ""
@@ -40,6 +44,7 @@ struct LoginPageView: View {
             } else {
                 print("success")
                 coordinator.showMainView = true
+
                 username = ""
                 password = ""
                 }
@@ -111,30 +116,6 @@ struct LoginPageView: View {
                     HStack {
                         Spacer()
                         
-//                        NavigationLink(destination: MainView()) {
-//                                            HStack {
-//                                                Text("Login".uppercased())
-//                                                    .font(Font.system(size: 20, weight: .bold))
-//                                                    .foregroundColor(.white)
-//
-//                                                Image(systemName: "arrow.right")
-//                                                    .foregroundColor(.white)
-//                                                    .font(Font.system(size: 20, weight: .bold))
-//                                            }
-//                                            .padding(.vertical, 18)
-//                                            .padding(.horizontal, 28)
-//                                            .background(LinearGradient(gradient: Gradient(colors: [Color("ColorRed"), Color("ColorBlue")]), startPoint: .leading, endPoint: .trailing))
-//                                            .cornerRadius(12)
-//                                            .frame(width: 170)
-//                                            .padding(.vertical, 20)
-//                                            .padding(.trailing, 20)
-//                                            .shadow(color: Color.gray.opacity(0.7), radius: 5, x: 0, y: 0)
-//                                        }
-//                                        .navigationBarItems(leading: EmptyView())
-//                                        .navigationBarBackButtonHidden(true)
-//                                        .navigationBarTitle("")
-//                                        .navigationBarHidden(true)
-                        
                         Button(action: {
                             login()
                         }) {
@@ -204,6 +185,7 @@ struct LoginPageView: View {
         }
         .fullScreenCover(isPresented: $coordinator.showMainView) {
                     MainView()
+                        .environmentObject(userData)
                 }
         .alert(isPresented: $showAlert) {
             Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))

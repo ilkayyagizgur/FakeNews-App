@@ -9,11 +9,24 @@ import SwiftUI
 
 struct ProfilePageView: View {
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var userData: UserData
     
     var body: some View {
-        Button("Logout") {
-                   presentationMode.wrappedValue.dismiss()
-               }
+        
+        VStack {
+            
+            Text("Username: \(userData.username)")
+            
+//            DisclosureGroup("Bookmark"){
+//
+//            }
+//            .padding()
+            
+            Button("Logout") {
+                presentationMode.wrappedValue.dismiss()
+            } //: BUTTON
+            
+        } //: VSTACK
     }
 }
 

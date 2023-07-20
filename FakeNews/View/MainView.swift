@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
+    @StateObject var userData = UserData()
     var body: some View {
         TabView {
             HomeView()
@@ -29,7 +30,9 @@ struct MainView: View {
                 }
             
         } //: TAB VIEW
+        .environmentObject(userData)
         .tint(Color("TextColor"))
+        
     }
 }
 

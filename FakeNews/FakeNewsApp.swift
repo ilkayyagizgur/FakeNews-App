@@ -24,16 +24,14 @@ struct FakeNewsApp: App {
     let persistenceController = PersistenceController.shared
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
+    @StateObject var userData = UserData()
 
     var body: some Scene {
         WindowGroup {
             LoginPageView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
-//                .onAppear {
-//                #if DEBUG
-//                                    UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
-//                #endif
-//                                }
+                .environmentObject(userData)
         }
     }
 }

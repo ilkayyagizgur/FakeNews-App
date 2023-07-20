@@ -35,6 +35,7 @@ struct RegisterPageView: View {
                         coordinator.showMainView = true
                         username = ""
                         password = ""
+                        confirmPassword = ""
                     }
                 }
             } else {
@@ -86,38 +87,87 @@ struct RegisterPageView: View {
                 }
                 .padding(.leading)
                 
-                TextField("Username", text: $username)
-                    .textFieldStyle(PlainTextFieldStyle())
-                    .autocapitalization(.none)
-                    .padding(12)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.white, lineWidth: 1.5)
-                    )
-                    .padding(.vertical, 10)
-                    .padding(.horizontal, 20)
-                
-                SecureField("Password", text: $password)
-                    .textFieldStyle(PlainTextFieldStyle())
-                    .autocapitalization(.none)
-                    .padding(12)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.white, lineWidth: 1.5)
-                    )
-                    .padding(.vertical, 10)
-                    .padding(.horizontal, 20)
+//                TextField("Username", text: $username)
+//                    .textFieldStyle(PlainTextFieldStyle())
+//                    .autocapitalization(.none)
+//                    .padding(12)
+//                    .overlay(
+//                        RoundedRectangle(cornerRadius: 8)
+//                            .stroke(Color.white, lineWidth: 1.5)
+//                    )
+//                    .padding(.vertical, 10)
+//                    .padding(.horizontal, 20)
             
-            SecureField("Confirm Password", text: $confirmPassword)
-                .textFieldStyle(PlainTextFieldStyle())
-                .autocapitalization(.none)
-                .padding(12)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.white, lineWidth: 1.5)
-                )
-                .padding(.vertical, 10)
-                .padding(.horizontal, 20)
+            ZStack(alignment: .leading) {
+                if username.isEmpty {
+                    Text("Username")
+                        .foregroundColor(.white.opacity(0.3))
+                }
+                TextField("", text: $username)
+            }
+            .autocapitalization(.none)
+            .padding(12)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.white, lineWidth: 1.5)
+            )
+            .padding(.vertical, 10)
+            .padding(.horizontal, 20)
+            
+                
+//                SecureField("Password", text: $password)
+//                    .textFieldStyle(PlainTextFieldStyle())
+//                    .autocapitalization(.none)
+//                    .padding(12)
+//                    .overlay(
+//                        RoundedRectangle(cornerRadius: 8)
+//                            .stroke(Color.white, lineWidth: 1.5)
+//                    )
+//                    .padding(.vertical, 10)
+//                    .padding(.horizontal, 20)
+            
+            ZStack(alignment: .leading) {
+                if password.isEmpty {
+                    Text("Password")
+                        .foregroundColor(.white.opacity(0.3))
+                }
+                SecureField("", text: $password)
+            }
+            .autocapitalization(.none)
+            .padding(12)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.white, lineWidth: 1.5)
+            )
+            .padding(.vertical, 10)
+            .padding(.horizontal, 20)
+            
+//            SecureField("Confirm Password", text: $confirmPassword)
+//                .textFieldStyle(PlainTextFieldStyle())
+//                .autocapitalization(.none)
+//                .padding(12)
+//                .overlay(
+//                    RoundedRectangle(cornerRadius: 8)
+//                        .stroke(Color.white, lineWidth: 1.5)
+//                )
+//                .padding(.vertical, 10)
+//                .padding(.horizontal, 20)
+            
+            ZStack(alignment: .leading) {
+                if confirmPassword.isEmpty {
+                    Text("Confirm Password")
+                        .foregroundColor(.white.opacity(0.3))
+                }
+                SecureField("", text: $confirmPassword)
+            }
+            .autocapitalization(.none)
+            .padding(12)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.white, lineWidth: 1.5)
+            )
+            .padding(.vertical, 10)
+            .padding(.horizontal, 20)
                 
             
             HStack {
