@@ -12,6 +12,7 @@ struct NewsItemView: View {
 //    let fake: News
     let fake : WebNews
     @State private var showAlert = false
+    @State private var bookmark: Bool = false
     
     var body: some View {
         
@@ -23,34 +24,43 @@ struct NewsItemView: View {
                 ProgressView()
             })
             .scaledToFit()
+            .overlay{
+            
+                VStack {
+                    HStack {
+                        Spacer()
+                        if bookmark {
+                            Image(systemName: "bookmark.fill")
+                                .foregroundColor(Color.yellow)
+                                .shadow(color: Color.black.opacity(0.5), radius: 5, x: 0, y: 0)
+                                .font(.system(size: 30, weight: .regular))
+                                .padding(.trailing)
+                                .padding(.top)
+                        }
+                    }
+                    Spacer()
+                }
+            }
+            
+            
             
             HStack(spacing: 10) {
-                    Button(action: {
-                        //showAlert = true
-                        //print(fake.DocumentIdentifier.split(separator: "."))
-                    }, label: {
+                   
                         if (fake.label == 0) {
                             Image(systemName: "exclamationmark.triangle.fill")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 40, height: 40)
                                 .foregroundColor(Color("ColorRed"))
+                                .padding(.horizontal, 7)
                         } else {
                             Image(systemName: "checkmark.circle.fill")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 40, height: 40)
                                 .foregroundColor(Color("ColorBlue"))
+                                .padding(.horizontal, 7)
                         }
-                        
-                    })//: BUTTON
-                    .alert(isPresented: $showAlert) {
-                        Alert(
-                            title: Text("Fake News"),
-                            message: Text("The red symbol means the news is 'Fake'")
-                        )
-                    }
-                    .padding(.horizontal, 7)
                  
                 
                 Text(fake.Title)
@@ -82,7 +92,7 @@ struct NewsItemView_Previews: PreviewProvider {
     static let fakes: [WebNews] = Bundle.main.decode("csvjsonWebFull.json")
     
     static var previews: some View {
-        NewsItemView(fake: fakes[2])
+        NewsItemView(fake: fakes[1])
             .previewLayout(.sizeThatFits)
             .padding()
     }

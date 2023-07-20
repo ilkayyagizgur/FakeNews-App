@@ -22,6 +22,11 @@ struct MainView: View {
                     Image(systemName: "magnifyingglass")
                     Text("Search")
                 }
+            ProfilePageView()
+                .tabItem{
+                    Image(systemName: "person")
+                    Text("Profile")
+                }
             
         } //: TAB VIEW
         .tint(Color("TextColor"))
