@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ProfilePageView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -23,7 +24,13 @@ struct ProfilePageView: View {
 //            .padding()
             
             Button("Logout") {
-                presentationMode.wrappedValue.dismiss()
+                do {
+                    try Auth.auth().signOut()
+                    presentationMode.wrappedValue.dismiss()
+                } catch {
+                    print("logoutClicked error in ProfilePageView")
+                }
+               
             } //: BUTTON
             
         } //: VSTACK

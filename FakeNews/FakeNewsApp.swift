@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-//import Firebase
+import Firebase
 import FirebaseCore
 
 
@@ -29,9 +29,16 @@ struct FakeNewsApp: App {
 
     var body: some Scene {
         WindowGroup {
-            LoginPageView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .environmentObject(userData)
+            if Auth.auth().currentUser != nil {
+                MainView()
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .environmentObject(userData)
+            } else {
+                LoginPageView()
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .environmentObject(userData)
+            }
+            
         }
     }
 }
